@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    background-color: #ff6347; 
+    color: white;
+    padding: 20px 0;
+}
+
+footer {
+    text-align: right;
+    background-color: #32cd32; 
+    color: white;
+    padding: 10px 20px;
+}
+h2{
+    margin: 5px;
+}
+
+#menu{
+    text-align: center;
+    color: #32cd32;
+    margin: 5% 10%;
+    font-size: 500%;
+}
+hr{
+    width: 50%;
+}
