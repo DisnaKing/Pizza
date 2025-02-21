@@ -19,7 +19,6 @@ export class PizzaService {
 
             // Convertim la resposta a JSON
             const dadesPG = await resposta.json();
-            console.log(dadesPG);
 
             // Verifiquem que les dades tenen el format esperat
             if (!dadesPG.records || !Array.isArray(dadesPG.records)) {

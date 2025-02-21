@@ -19,10 +19,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             pizzaElement.setAttribute("pizza-vege", p.vegetariana ? "SI" : "NO");
             pizzaElement.setAttribute("pizza-img", p.img);
             pizzaElement.setAttribute("alergens", JSON.stringify(p.alergens));
-
+            pizzaElement.setAttribute('subtotal', p.preu);
             // Agregar el elemento pizza a la lista
             llista.appendChild(pizzaElement);
         });
+        
     } catch (error) {
         console.error("Error carregant les pizzes:", error);
     }

@@ -1,3 +1,4 @@
+
 class LlistaAlergens extends HTMLElement{
     constructor() {
         //Cridar al constructor de la clase superior
@@ -16,7 +17,6 @@ class LlistaAlergens extends HTMLElement{
     }
     render() {
         const alergens = JSON.parse(this.getAttribute('alergens') || '[]');
-        console.log("Lista de alérgenos recibida:", alergens);
         this.shadowRoot.innerHTML = `
         <style>
             .alergen-list {
