@@ -73,15 +73,21 @@ class PizzaCard extends HTMLElement {
                     font-size: 0.8em;
                     color: #f44336;
                 }
+                .price{
+                    display: inline-block;
+                    max-width: 50px;
+                    text-align: center;
+                }
             </style>
             <div class="pizza-card">
                 <img src="${this.serverUrl}${img}" alt="${nom}">
                 <div class="content">
                     <h2>${nom}</h2>
-                    <p class="price">${preu}</p>
                     <p>${desc}</p>
                     <p class="vege"><strong>Vegetariana:</strong> ${vege}</p>
                     <alergens-card alergens='${alergens}'></alergens-card>
+                    <label>Preu</label>
+                    <input class="price" value="${preu}">
                 </div>
             </div>`;
     }
