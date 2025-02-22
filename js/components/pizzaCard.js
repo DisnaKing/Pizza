@@ -39,6 +39,7 @@ class PizzaCard extends HTMLElement {
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                     overflow: hidden;
                     max-width: 400px;
+                    min-width: 400px;
                     margin: 10px;
                     transition: transform 0.2s;
                 }
@@ -109,7 +110,7 @@ class PizzaCard extends HTMLElement {
                 }
                 
                 .buttons button {
-                    background: #007bff;
+                    background: darkseagreen;
                     color: white;
                     border: none;
                     padding: 8px;
@@ -120,7 +121,7 @@ class PizzaCard extends HTMLElement {
                 }
                 
                 .buttons button:hover {
-                    background: #0056b3;
+                    background: darkolivegreen;
                 }
                 
                 .buttons input {
@@ -130,9 +131,8 @@ class PizzaCard extends HTMLElement {
                     border: 1px solid #ccc;
                     border-radius: 5px;
                 }
-                .center{
-                    display: inline;
-                    align-items: center;
+                #center{
+                    justify-content: center;
                 }
                 alegens-card {
                     margin: 10px;
@@ -147,14 +147,14 @@ class PizzaCard extends HTMLElement {
                     <div id="center">
                         <div class="price">
                             <label>Preu</label>
-                            <input id="preu" type="text" value="${preu}" readonly>
+                            <input id="preu" type="number" value="${preu}" readonly>
                             
                             <label>Subtotal</label>
-                            <input id="subtotal" type="text" value="${subtotal}" readonly>
+                            <input id="subtotal" type="number" value="${subtotal}" readonly>
                             
                             <div class="buttons">
                                 <button id="btn-decrease">−</button>
-                                <input id="number"  value="1">
+                                <input id="number"  value="1" readonly>
                                 <button id="btn-increase">+</button>
                             </div>
                         </div>
@@ -162,23 +162,35 @@ class PizzaCard extends HTMLElement {
                     <alergens-card alergens='${alergens}'></alergens-card>
                 </div>
             </div>`;
+        this.calcularSubtotal();
     }
+    calcularSubtotal(){
+        const shadow = this.shadowRoot
+        const cantidadInput = shadow.querySelector("#number");
+        const preuInput = shadow.querySelector("#preu");
+        const subtotalInput = shadow.querySelector("#subtotal");
+        const btnIncrease = shadow.querySelector("#btn-increase");
+        const btnDecrease = shadow.querySelector("#btn-decrease");
 
+        if (!btnIncrease || !btnDecrease || !cantidadInput || !preuInput || !subtotalInput) return;
+
+        let cantidad = parseInt(cantidadInput.value, 10)
+        let preu = parseFloat(preuInput.value);
+
+        btnIncrease.addEventListener("click", () => {
+            cantidad++;
+            cantidadInput.value = cantidad;
+            subtotalInput.value = (preu * cantidad).toFixed(2);
+
+        })
+        btnDecrease.addEventListener("click", () => {
+            if(cantidad > 1){
+                cantidad--;
+                cantidadInput.value = cantidad;
+                subtotalInput.value = (preu * cantidad).toFixed(2);
+            }
+
+        })
+    }
 }
 customElements.define('pizza-card', PizzaCard);
-
-
-addEventListener("DOMContentLoaded", function() {
-    let cantidad = document.getElementById("number");
-    let preu = document.getElementById("preu");
-    let subtotal = document.getElementById("subtotal")
-    document.getElementById('btn-increase').addEventListener("click", function() {
-
-        cantidad +=1;
-        let resultado = `${preu * cantidad}`;
-        subtotal.setAttribute('value', resultado);
-    })
-    document.getElementById('btn-decrease').addEventListener("click", function() {
-
-    })
-})

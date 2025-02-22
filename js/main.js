@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Agregar el elemento pizza a la lista
             llista.appendChild(pizzaElement);
         });
-        
+
     } catch (error) {
         console.error("Error carregant les pizzes:", error);
     }
