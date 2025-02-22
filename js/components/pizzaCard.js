@@ -15,12 +15,28 @@ class PizzaCard extends HTMLElement {
     connectedCallback() {
         this.render();
     }
+
+    /**
+     * funcio que observa els atributs
+     * @returns {string[]}
+     */
     static get observedAttributes() {
         return ['pizza-img', 'alergens', 'pizza-nom', 'pizza-preu','pizza-desc','pizza-vege','subtotal'];
     }
+
+    /**
+     * funcio que comprova els canvis en els atributs
+     * @param name
+     * @param oldValue
+     * @param newValue
+     */
     attributeChangedCallback(name, oldValue, newValue) {
          this.render();
     }
+
+    /**
+     * Creacio de l'objecte
+     */
     render(){
         const nom = this.getAttribute('pizza-nom') || 'Pizza desconeguda';
         const preu = this.getAttribute('pizza-preu') || '0.00';
@@ -164,6 +180,10 @@ class PizzaCard extends HTMLElement {
             </div>`;
         this.calcularSubtotal();
     }
+
+    /**
+     * Crea els listeners per a quan es sume o reste quantitat
+     */
     calcularSubtotal(){
         const shadow = this.shadowRoot
         const cantidadInput = shadow.querySelector("#number");
@@ -193,4 +213,6 @@ class PizzaCard extends HTMLElement {
         })
     }
 }
+
+// Crea l'element defineix l'element com a pizza-card
 customElements.define('pizza-card', PizzaCard);

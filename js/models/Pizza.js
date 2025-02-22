@@ -1,4 +1,5 @@
 export class Pizza {
+    // Constructor per a la classe
     constructor(ingredients) {
         this.id = ingredients.id;
         this.nom = ingredients.nom;
@@ -8,6 +9,8 @@ export class Pizza {
         this.alergens = ingredients.alergens;
         this.img = ingredients.img;
     }
+
+    // Metode toString()
     toString(){
         return `${this.nom}- ${this.preu}`
     }

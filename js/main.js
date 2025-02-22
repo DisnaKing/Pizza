@@ -1,4 +1,4 @@
-import { PizzaService } from "./services/PizzaService.js";
+import { PizzaService } from "./services/pizzaService.js";
 import "./components/PizzaCard.js";
 import "./components/LlistaAlergens.js";
 

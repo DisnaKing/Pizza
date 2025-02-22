@@ -6,13 +6,13 @@ class LlistaAlergens extends HTMLElement{
         //Crear un shadowroot
         this.attachShadow({mode : 'open'})
     }
-    static get observedAttributes() {
+    static get observedAttributes() { // Observa els atributs de l'objecte
         return ['alergens'];
     }
-    attributeChangedCallback() {
+    attributeChangedCallback() { // Realitza el render cada vegada que canvia un atribut
         this.render();
     }
-    connectedCallback(){
+    connectedCallback(){ // Realitza el render al crearse l'objecte
         this.render();
     }
     render() {
@@ -22,11 +22,11 @@ class LlistaAlergens extends HTMLElement{
             .alergen-list {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 10px; /* Espacio entre los elementos */
+                gap: 10px; /* Espai entre els elements*/
                 list-style: none;
                 padding: 0;
                 margin: 0;
-                justify-content: center; /* Centrar los elementos */
+                justify-content: center; /* Centrar els elements */
             }
             
             .alergen-list li {
@@ -38,16 +38,17 @@ class LlistaAlergens extends HTMLElement{
             }
             
             .alergen-list li:hover {
-                transform: scale(1.1); /* Efecto hover */
+                transform: scale(1.1); /* Efecte Hover */
             }
             
             .alergen-list img {
-                width: 40px; /* Ajusta el tamaño del icono */
+                width: 40px; /* Ajusta el tamany de la icona */
                 height: 40px;
                 object-fit: contain;
             }
 
-        </style>
+        </style> 
+        <!-- Element alergens-card -->
         <ul class="alergen-list">
             ${alergens.map(a => `
                 <li>
