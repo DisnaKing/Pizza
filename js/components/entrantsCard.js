@@ -1,5 +1,6 @@
 import "./LlistaAlergens.js"
-class PizzaCard extends HTMLElement {
+import {entrantsService} from "../services/entrantsService.js";
+class entrantsCard extends HTMLElement {
     constructor(){
         //cridar al constructor de la clase superior
         super();
@@ -21,7 +22,7 @@ class PizzaCard extends HTMLElement {
      * @returns {string[]}
      */
     static get observedAttributes() {
-        return ['pizza-img', 'alergens', 'pizza-nom', 'pizza-preu','pizza-desc','pizza-vege','subtotal'];
+        return ['entrant-img', 'entrant-nom', 'entrant-preu','subtotal'];
     }
 
     /**
@@ -31,23 +32,21 @@ class PizzaCard extends HTMLElement {
      * @param newValue
      */
     attributeChangedCallback(name, oldValue, newValue) {
-         this.render();
+        this.render();
     }
 
     /**
      * Creacio de l'objecte
      */
     render(){
-        const nom = this.getAttribute('pizza-nom') || 'Pizza desconeguda';
-        const preu = this.getAttribute('pizza-preu') || '0.00';
-        const desc = this.getAttribute('pizza-desc') || 'Descripcio';
-        const vege = this.getAttribute('pizza-vege');
-        const img = this.getAttribute('pizza-img') || 'Imatge';
-        const alergens = this.getAttribute('alergens') || [];
-        const subtotal = this.getAttribute('subtotal' || preu);
+        const nom = this.getAttribute('entrant-nom') || 'Entrant desconegut';
+        const preu = this.getAttribute('entrant-preu') || '0.00';
+        const img = this.getAttribute('entrant-img') || 'entrant';
+        const id = this.getAttribute('entrant-id') || 'id';
+        const subtotal = this.getAttribute('subtotal' || '0.00');
         this.shadowRoot.innerHTML = `
             <style>
-                .pizza-card {
+                .entrants-card {
                     display: inline-block;
                     font-family: Arial, sans-serif;
                     border: 1px solid #ddd;
@@ -55,39 +54,39 @@ class PizzaCard extends HTMLElement {
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                     overflow: hidden;
                     max-width: 400px;
-                    min-width: 400px;
                     margin: 10px;
                     transition: transform 0.2s;
                 }
-                .pizza-card:hover {
+                .entrants-card:hover {
                     transform: scale(1.05);
                 }
-                .pizza-card img {
+                .entrants-card img {
                     width: 100%;
                     height: auto;
                     border-bottom: 1px solid #ddd;
                 }
-                .pizza-card .content {
+                .entrants-card .content {
                     padding: 16px;
                 }
-                .pizza-card .content h2 {
+                .entrants-card .content h2 {
                     margin: 0;
+                    text-align: center;
                     font-size: 1.5em;
                     color: #333;
                 }
-                .pizza-card .content p {
+                .entrants-card .content p {
                     margin: 8px 0;
                     color: #666;
                 }
-                .pizza-card .content .price {
+                .entrants-card .content .price {
                     font-size: 1.2em;
                     color: #e91e63;
                 }
-                .pizza-card,.content,.vege {
+                .entrants-card,.content,.vege {
                     font-size: 0.9em;
                     color: #4caf50;
                 }
-                .pizza-card .content .alergens {
+                .entrants-card .content .alergens {
                     font-size: 0.8em;
                     color: #f44336;
                 }
@@ -150,16 +149,11 @@ class PizzaCard extends HTMLElement {
                 #center{
                     justify-content: center;
                 }
-                alegens-card {
-                    margin: 10px;
-                }
             </style>
-            <div class="pizza-card">
-                <img src="${this.serverUrl}${img}" alt="${nom}">
+            <div class="entrants-card">
+                <img src="${this.serverUrl}${img}" alt="${id}">
                 <div class="content">
                     <h2>${nom}</h2>
-                    <p>${desc}</p>
-                    <p class="vege"><strong>Vegetariana:</strong> ${vege}</p>
                     <div id="center">
                         <div class="price">
                             <label>Preu</label>
@@ -175,7 +169,6 @@ class PizzaCard extends HTMLElement {
                             </div>
                         </div>
                     </div>
-                    <alergens-card alergens='${alergens}'></alergens-card>
                 </div>
             </div>`;
         this.calcularSubtotal();
@@ -215,4 +208,4 @@ class PizzaCard extends HTMLElement {
 }
 
 // Crea l'element defineix l'element com a pizza-card
-customElements.define('pizza-card', PizzaCard);
+customElements.define('entrants-card', entrantsCard);
