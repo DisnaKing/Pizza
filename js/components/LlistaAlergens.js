@@ -1,10 +1,8 @@
-
-class LlistaAlergens extends HTMLElement{
+import { BaseComponent } from "../libcomponents/base_component.js";
+class LlistaAlergens extends BaseComponent {
     constructor() {
         //Cridar al constructor de la clase superior
         super();
-        //Crear un shadowroot
-        this.attachShadow({mode : 'open'})
     }
     static get observedAttributes() { // Observa els atributs de l'objecte
         return ['alergens'];

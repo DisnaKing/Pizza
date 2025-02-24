@@ -1,12 +1,9 @@
 import "./LlistaAlergens.js"
-import {entrantsService} from "../services/entrantsService.js";
-class entrantsCard extends HTMLElement {
+import { BaseComponent } from "../libcomponents/base_component.js";
+class entrantsCard extends BaseComponent {
     constructor(){
         //cridar al constructor de la clase superior
         super();
-        //Crear un Shadowroot
-        this.attachShadow({mode : 'open'})
-        //
         this.serverUrl = 'https://pizza-rest-server-production.up.railway.app';
     }
 

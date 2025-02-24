@@ -1,11 +1,9 @@
 import "./LlistaAlergens.js"
-class PizzaCard extends HTMLElement {
+import { BaseComponent } from "../libcomponents/base_component.js";
+class PizzaCard extends BaseComponent {
     constructor(){
         //cridar al constructor de la clase superior
         super();
-        //Crear un Shadowroot
-        this.attachShadow({mode : 'open'})
-        //
         this.serverUrl = 'https://pizza-rest-server-production.up.railway.app';
     }
 
@@ -42,9 +40,10 @@ class PizzaCard extends HTMLElement {
         const preu = this.getAttribute('pizza-preu') || '0.00';
         const desc = this.getAttribute('pizza-desc') || 'Descripcio';
         const vege = this.getAttribute('pizza-vege');
-        const img = this.getAttribute('pizza-img') || 'Imatge';
+        const img = this.getAttribute('pizza-img') || '0';
         const alergens = this.getAttribute('alergens') || [];
         const subtotal = this.getAttribute('subtotal' || preu);
+        const defaultImg = 'https://cdni.iconscout.com/illustration/premium/thumb/error-404-illustration-download-in-svg-png-gif-file-formats--not-found-page-restaurant-pack-food-drink-illustrations-3569464.png?f=webp'
         this.shadowRoot.innerHTML = `
             <style>
                 .pizza-card {
@@ -155,7 +154,7 @@ class PizzaCard extends HTMLElement {
                 }
             </style>
             <div class="pizza-card">
-                <img src="${this.serverUrl}${img}" alt="${nom}">
+                <img src="${this.serverUrl}${img}" alt="${nom}" onerror="this.onerror=null;this.src='${defaultImg}'">
                 <div class="content">
                     <h2>${nom}</h2>
                     <p>${desc}</p>

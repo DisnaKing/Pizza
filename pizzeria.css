@@ -11,22 +11,28 @@ header {
     padding: 20px 0;
 }
 
-footer {
+#footer {
     text-align: right;
     background-color: #32cd32; 
     color: white;
     padding: 10px 20px;
 }
-h2{
+h1{
     margin: 5px;
-}
-
-#menu{
-    text-align: center;
-    color: #32cd32;
-    margin: 5% 10%;
-    font-size: 500%;
 }
 hr{
     width: 50%;
+}
+.tab{
+    font-size: 2rem;
+}
+#menuPizzes{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+#menuEntrants{
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
 }
