@@ -49,7 +49,7 @@ class PizzaCard extends BaseComponent {
                 .pizza-card {
                     display: inline-block;
                     font-family: Arial, sans-serif;
-                    border: 1px solid #ddd;
+                    border: 1px solid var(--secondary-color);
                     border-radius: 8px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                     overflow: hidden;
@@ -59,7 +59,7 @@ class PizzaCard extends BaseComponent {
                     transition: transform 0.2s;
                 }
                 .pizza-card:hover {
-                    transform: scale(1.05);
+                    transform: scale(1.03);
                 }
                 .pizza-card img {
                     width: 100%;

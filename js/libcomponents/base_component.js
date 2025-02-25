@@ -18,9 +18,10 @@ export class BaseComponent extends HTMLElement { // Exportem la classe per usar-
         return `
             :host {
                 font-family: 'Arial', sans-serif;
-                --primary-color: #7A1710;
-                --secondary-color: #C9A227;
-                --text-color: #4A4A4A;
+                --primary-color: #8B0000;
+                --secondary-color: #B55239;
+                --text-color: #D4AF37;
+                --button-color: #5E7C3A:
                 --background-color: #fff;
             }
 
