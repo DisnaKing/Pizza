@@ -1,9 +1,7 @@
-export class Entrants {
+import {Producte} from "./producte.js"
+export class Entrants extends Producte{
     constructor(Entrants){
-        this.id = Entrants.id;
-        this.preu = Entrants.preu;
-        this.nom = Entrants.nom;
-        this.img = Entrants.img;
+        super(Entrants)
     }
     toString(){
         return `${this.id} entrants`;

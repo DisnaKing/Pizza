@@ -1,12 +1,11 @@
-import { PizzaService } from "./services/pizzaService.js";
-import { entrantsService } from "./services/entrantsService.js";
+import { PizzeriaService } from "./services/pizzeriaService.js";
 import "./components/PizzaCard.js";
 import "./components/entrantsCard.js";
 import "./components/LlistaAlergens.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const pizzes = await PizzaService.getPizza();
+        const pizzes = await PizzeriaService.getPizza();
         const llistaPizzes = document.getElementById("menuPizzes");
 
         pizzes.forEach((p) => {
@@ -27,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         });
 
-        const entrants = await entrantsService.getEntrants();
+        const entrants = await PizzeriaService.getEntrants();
         const llistaEntrants = document.getElementById("menuEntrants");
 
         entrants.forEach((e) => {
@@ -42,6 +41,26 @@ document.addEventListener("DOMContentLoaded", async () => {
             entrantElement.setAttribute('subtotal','0.00');
             // Agregar el elemento pizza a la lista
             llistaEntrants.appendChild(entrantElement);
+        });
+        const begudes = await PizzeriaService.getBeguda();
+        const llistaBegudes = document.getElementById("menuBegudes");
+
+        begudes.forEach((b) => {
+            // Crear el Web Component de la pizza
+            const begudaElement = document.createElement("beguda-card");
+
+            // Establecer atributos de la pizza
+            begudaElement.setAttribute("pizza-id", b.id);
+            begudaElement.setAttribute("pizza-nom", b.nom);
+            begudaElement.setAttribute("pizza-preu", b.preu);
+            begudaElement.setAttribute("pizza-desc", b.desc);
+            begudaElement.setAttribute("pizza-vege", b.vegetariana ? "SI" : "NO");
+            begudaElement.setAttribute("pizza-img", b.img);
+            begudaElement.setAttribute("alergens", JSON.stringify(b.alergens));
+            begudaElement.setAttribute('subtotal', '0.00');
+            // Agregar el elemento pizza a la lista
+            llistaBegudes.appendChild(begudaElement);
+
         });
     } catch (error) {
         console.error("Error carregant les dades:", error);

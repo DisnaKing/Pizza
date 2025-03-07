@@ -1,13 +1,11 @@
-export class Pizza {
+import {Producte} from "./producte.js"
+export class Pizza extends Producte{
     // Constructor per a la classe
     constructor(ingredients) {
-        this.id = ingredients.id;
-        this.nom = ingredients.nom;
+        super(ingredients);
         this.desc = ingredients.desc;
         this.vegetariana = ingredients.vegetariana;
-        this.preu = ingredients.preu;
         this.alergens = ingredients.alergens;
-        this.img = ingredients.img;
     }
 
     // Metode toString()

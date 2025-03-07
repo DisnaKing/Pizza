@@ -1,6 +1,5 @@
-import "./LlistaAlergens.js"
 import { BaseComponent } from "../libcomponents/base_component.js";
-class PizzaCard extends BaseComponent {
+class begudaCard extends BaseComponent {
     constructor(){
         //cridar al constructor de la clase superior
         super();
@@ -19,7 +18,7 @@ class PizzaCard extends BaseComponent {
      * @returns {string[]}
      */
     static get observedAttributes() {
-        return ['pizza-img', 'alergens', 'pizza-nom', 'pizza-preu','pizza-desc','pizza-vege','subtotal'];
+        return ['beguda-id','beguda-nom','beguda-preu','beguda-sucre','beguda-cafeina','beguda-alcohol'];
     }
 
     /**
@@ -36,12 +35,10 @@ class PizzaCard extends BaseComponent {
      * Creacio de l'objecte
      */
     render(){
-        const nom = this.getAttribute('pizza-nom') || 'Pizza desconeguda';
-        const preu = this.getAttribute('pizza-preu') || '0.00';
-        const desc = this.getAttribute('pizza-desc') || 'Descripcio';
-        const vege = this.getAttribute('pizza-vege');
-        const img = this.getAttribute('pizza-img') || '0';
-        const alergens = this.getAttribute('alergens') || [];
+        const id = this.getAttribute('beguda-id')|| 'idBeguda';
+        const nom = this.getAttribute('beguda-nom') || 'Beguda desconeguda';
+        const preu = this.getAttribute('beguda-preu') || '0.00';
+        const img = this.getAttribute('beguda-img') || '0';
         const subtotal = this.getAttribute('subtotal' || preu);
         const defaultImg = 'https://cdni.iconscout.com/illustration/premium/thumb/error-404-illustration-download-in-svg-png-gif-file-formats--not-found-page-restaurant-pack-food-drink-illustrations-3569464.png?f=webp'
         this.shadowRoot.innerHTML = `
@@ -158,8 +155,6 @@ class PizzaCard extends BaseComponent {
                 <img src="${this.serverUrl}${img}" alt="${nom}" onerror="this.onerror=null;this.src='${defaultImg}'">
                 <div class="content">
                     <h2>${nom}</h2>
-                    <p>${desc}</p>
-                    <p class="vege"><strong>Vegetariana:</strong> ${vege}</p>
                     <div id="center">
                         <div class="price">
                             <label>Preu</label>
@@ -175,7 +170,6 @@ class PizzaCard extends BaseComponent {
                             </div>
                         </div>
                     </div>
-                    <alergens-card alergens='${alergens}'></alergens-card>
                 </div>
             </div>`;
         this.calcularSubtotal();
@@ -215,4 +209,4 @@ class PizzaCard extends BaseComponent {
 }
 
 // Crea l'element defineix l'element com a pizza-card
-customElements.define('pizza-card', PizzaCard);
+customElements.define('beguda-card', begudaCard);
