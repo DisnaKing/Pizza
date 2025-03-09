@@ -16,26 +16,22 @@
             <button slot="tabs" class="tab">Pizzes</button>
             <button slot="tabs" class="tab">Entrants</button>
             <button slot="tabs" class="tab">Begudes</button>
-            <button slot="tabs" class="tab">Carret</button>
+            <button slot="tabs" class="tab"><carret-status-component></carret-status-component></button>
             <button slot="tabs" class="tab">Comanda</button>
 
             <div slot="contents">
                 <div id="menuPizzes" > <!-- Se afegixen les pizzes dinamicament --></div>
-            </div>
-            <div slot="contents">
                 <div id="menuEntrants"> <!-- Se afegixen les pizzes dinamicament --></div>
-            </div>
-            <div slot="contents">
-                <div id="menuBegudes"> </div> <!-- S'afegeixen les begudes dinamicament -->
+                <div id="menuBegudes"> <!-- S'afegeixen les begudes dinamicament --> </div>
+                <div id="carret-comanda">
+                    <carret-component></carret-component>
+                </div>
             </div>
         </tab-component>
-        <p id="footer" slot="footer">copyright 🍕 all rights reserved 2025</p>
+        <div slot="footer"> <p id="footer" >copyright 🍕 all rights reserved 2025</p></div>
+
     </scaffold-component>
 
 </body>
-<script  type="module" src="./js/main.js"></script>
-<script type="module" src="./js/libcomponents/base_component.js"></script>
-<script type="module" src="./js/libcomponents/scaffold_component.js"></script>
-<script type="module" src="./js/libcomponents/tab_component.js"></script>
-<script type="module" src="./js/components/pizzaCard.js"></script>
+<script type="module" src="./js/main.js" defer></script>
 </html>

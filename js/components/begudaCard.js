@@ -1,5 +1,5 @@
-import { BaseComponent } from "../libcomponents/base_component.js";
-class begudaCard extends BaseComponent {
+import {CardComponent} from "./CardComponent.js";
+class begudaCard extends CardComponent {
     constructor(){
         //cridar al constructor de la clase superior
         super();
@@ -39,8 +39,11 @@ class begudaCard extends BaseComponent {
         const nom = this.getAttribute('beguda-nom') || 'Beguda desconeguda';
         const preu = this.getAttribute('beguda-preu') || '0.00';
         const img = this.getAttribute('beguda-img') || '0';
+        const sucre = this.getAttribute('beguda-sucre') || '0';
+        const cafeina = this.getAttribute('beguda-cafeina') || '0';
+        const alcohol = this.getAttribute('beguda-alcohol') || '0';
         const subtotal = this.getAttribute('subtotal' || preu);
-        const defaultImg = 'https://cdni.iconscout.com/illustration/premium/thumb/error-404-illustration-download-in-svg-png-gif-file-formats--not-found-page-restaurant-pack-food-drink-illustrations-3569464.png?f=webp'
+        const defaultImg = 'https://img.freepik.com/psd-gratis/bebida-energetica-vibrante-puede-disenar-arte-abstracto_191095-85978.jpg'
         this.shadowRoot.innerHTML = `
             <style>
                 .pizza-card {
@@ -155,6 +158,9 @@ class begudaCard extends BaseComponent {
                 <img src="${this.serverUrl}${img}" alt="${nom}" onerror="this.onerror=null;this.src='${defaultImg}'">
                 <div class="content">
                     <h2>${nom}</h2>
+                    <h3>Sucre: ${sucre}</h3>
+                    <h3>Cafeina: ${cafeina}</h3>
+                    <h3>Alcohol: ${alcohol}</h3>
                     <div id="center">
                         <div class="price">
                             <label>Preu</label>

@@ -1,5 +1,6 @@
 import { Pizza } from "../models/Pizza.js";
 import {Entrants} from "../models/Entrants.js";
+import {Beguda} from "../models/Beguda.js";
 export class PizzeriaService {
     // URL de la API
     static pizzaURL = 'https://pizza-rest-server-production.up.railway.app/api/pizzeria/pizzes';

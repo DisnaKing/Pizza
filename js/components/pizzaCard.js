@@ -1,6 +1,6 @@
 import "./LlistaAlergens.js"
-import { BaseComponent } from "../libcomponents/base_component.js";
-class PizzaCard extends BaseComponent {
+import {CardComponent} from "./CardComponent.js";
+class PizzaCard extends CardComponent {
     constructor(){
         //cridar al constructor de la clase superior
         super();

@@ -1,14 +1,13 @@
 // components/PizzaCard.js
-import '../../../../Users/guill/Downloads/webapp_eljust_eat_pizza-main/Sprint3/js/components/CounterComponent.js';
+import '../components/CounterComponent.js';
 
 // Importem el component de base
-import { BaseComponent } from '../../../../Users/guill/Downloads/webapp_eljust_eat_pizza-main/Sprint3/js/libcomponents/base_component.js'
-
+import { BaseComponent } from '../libcomponents/base_component.js';
 export class CardComponent extends BaseComponent {
     constructor() {
         super();
         // No afegim shadowDOM, ja que l'hereta de la base
-        this.serverURL = "https://pizza-rest-server-production.up.railway.app/";
+        this.serverURL = "https://pizza-rest-server-production.up.railway.app";
     }
 
     static get styles() {

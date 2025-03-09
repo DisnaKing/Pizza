@@ -1,5 +1,5 @@
 // Importem el component de base
-import { BaseComponent } from '../../../../Users/guill/Downloads/webapp_eljust_eat_pizza-main/Sprint3/js/libcomponents/base_component.js'
+import { BaseComponent } from '../libcomponents/base_component.js'
 class CounterComponent extends BaseComponent {
     constructor() {
         super();
