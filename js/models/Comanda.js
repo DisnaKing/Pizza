@@ -13,17 +13,19 @@ export class Comanda {
             ShowMyAlert("error", "El carret esta buit");
             return;
         }
-
-        console.log("Botón de realizar comanda presionado.");
-        console.log("Productos en el carrito antes de realizar comanda:", this.carret.elements);
-
-
         const llistaComandes = document.getElementById("comandes");
 
         // Crear un nuevo "comanda-component"
         const comandaComponent = document.createElement("comanda-component");
         comandaComponent.setComanda(this);
-        llistaComandes.appendChild(comandaComponent);
+        
+        // Aquí es fa servir insertBefore per afegir el component abans de l'últim element de llistaComandes
+        const primerElement = llistaComandes.firstChild; // Això obté el primer element fill dins llistaComandes
+        if (primerElement) {
+            llistaComandes.insertBefore(comandaComponent, primerElement); // Afegeix el comandaComponent abans del primer element
+        } else {
+            llistaComandes.appendChild(comandaComponent); // Si no hi ha cap element, afegeix-lo com a primer fill
+        }
 
         // Vaciar el carrito después de realizar la comanda
         this.carret.buidarCarret();
@@ -40,6 +42,7 @@ export class Comanda {
             // Llamamos al método de actualización del CarretStatusComponent
             carretStatusComponent.update();
         }
+        ShowMyAlert("success", "Comanda realitzada");
     }
 
     // Método para calcular el precio total de la comanda

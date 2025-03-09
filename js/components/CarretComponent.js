@@ -44,6 +44,25 @@ class CarretComponent extends BaseComponent {
                     justify-content: center;
                     transition: 0.3s;
                 }
+                #Comanda {
+                    background-color: #2a9d8f; /* Color de fons verd */
+                    color: white; /* Color del text */
+                    font-size: 16px; /* Mida de la lletra */
+                    padding: 10px 20px; /* Espai al voltant del text */
+                    border: none; /* Sense bordes */
+                    border-radius: 5px; /* Cantons arrodonits */
+                    cursor: pointer; /* Canvia el cursor quan el botó es passa per sobre */
+                    transition: background-color 0.3s; /* Afegir transició per l'efecte al passar el ratolí */
+                }
+            
+                #Comanda:hover {
+                    background-color: #1f7e6f; /* Color de fons quan es passa el ratolí */
+                }
+            
+                #Comanda:focus {
+                    outline: none; /* Eliminar el contorn quan el botó es selecciona */
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Afegir una petita ombra quan el botó està actiu */
+                }
             </style>
             <div class="carret">
                 <h3>Carret de la compra</h3>

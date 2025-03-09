@@ -32,6 +32,10 @@ class ComandaComponent extends HTMLElement {
                     max-width: 400px;
                     margin: 20px auto;
                 }
+                .comanda:hover {
+                    transform: translateY(-5px); /* Moure cap amunt per donar un efecte de "flotar" */
+                    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Afegir una ombra més intensa quan el ratolí passa per sobre */
+                }
                 
                 .comanda h3 {
                     font-size: 24px;
