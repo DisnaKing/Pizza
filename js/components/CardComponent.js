@@ -3,6 +3,7 @@ import '../components/CounterComponent.js';
 
 // Importem el component de base
 import { BaseComponent } from '../libcomponents/base_component.js';
+
 export class CardComponent extends BaseComponent {
     constructor() {
         super();

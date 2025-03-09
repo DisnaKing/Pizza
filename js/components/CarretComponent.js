@@ -1,12 +1,13 @@
-// Importem el component de base
-import { BaseComponent } from '../libcomponents/base_component.js';
+import {BaseComponent} from "../libcomponents/base_component.js";
+import {Comanda} from "../models/Comanda.js";
+import "../components/comandaComponent.js";
 
 class CarretComponent extends BaseComponent {
     constructor() {
         super();
         this.shadowRoot.innerHTML = `
             <style>
-                ${BaseComponent.styles} /* Afegim estils del component base !! */
+                ${BaseComponent.styles} 
                 :host {
                     display: block;
                     padding: 10px;
@@ -29,20 +30,12 @@ class CarretComponent extends BaseComponent {
                 .producte:last-child {
                     border-bottom: none;
                 }
-                /*.borrar {
-                    color: red;
-                    border: none;
-                    padding: 5px;
-                    cursor: pointer;
-                    border-radius: 5px;
-                }*/
-
                 .borrar {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
                     border: none;
-                    background-color:red;
+                    background-color: red;
                     color: white;
                     font-size: 24px;
                     cursor: pointer;
@@ -56,8 +49,16 @@ class CarretComponent extends BaseComponent {
                 <h3>Carret de la compra</h3>
                 <div id="llista-productes"></div>
                 <p><strong>Total: <span id="total-preu">0.00</span>€</strong></p>
+                <button id="Comanda">Realitzar Comanda</button>
             </div>
         `;
+
+
+        this.shadowRoot.querySelector("#Comanda").addEventListener("click", () => {
+            let comanda = new Comanda(this.carret);
+            comanda.realitzarComanda(this.carret.elements);
+        });
+
 
         this.carret = null;
     }
@@ -66,7 +67,6 @@ class CarretComponent extends BaseComponent {
         if (!carret) return;
         this.carret = carret;
         this.update();
-        // Escoltem l'event carretActualitzat en el carret
         this.carret.addEventListener("carretActualitzat", () => this.update());
     }
 
@@ -94,6 +94,7 @@ class CarretComponent extends BaseComponent {
         });
 
         this.shadowRoot.querySelector("#total-preu").textContent = this.carret.calcularPreuTotal().toFixed(2);
+        console.log("Event capturat, done");
     }
 }
 

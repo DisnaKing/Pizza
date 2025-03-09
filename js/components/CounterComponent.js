@@ -39,7 +39,8 @@ class CounterComponent extends BaseComponent {
 
     // Aquest mètode actualitza el valo del comptador 
     update() {
-        if (!this.carret || !this.producte) return;
+
+        if (!this.producte) return;
 
         // Busquem el producte dins del carret
         let elementCarret = null;
@@ -103,29 +104,11 @@ class CounterComponent extends BaseComponent {
         // Assignem esdeveniments als botons
         this.shadowRoot.getElementById('increment').addEventListener('click', () => {
             if (this.incrementCallback) this.incrementCallback();
-
         });
         this.shadowRoot.getElementById('decrement').addEventListener('click', () => {
-            if (this.incrementCallback)
-                this.decrementCallback();
+            if (this.incrementCallback) this.decrementCallback();
         });
     };
 }
-
-/*
- 
-// Aquest era el mecanisme anterior: Reactivitat a nivell de component, però no global
-
-afigProducte() {
-    this.count++;
-    this.shadowRoot.querySelector('.counter-value').textContent = this.count;
-}
-
-eliminaProducte() {
-    if (this.count>0) this.count--;
-    this.shadowRoot.querySelector('.counter-value').textContent = this.count;
-}*/
-
-
 // Registrar el component
 customElements.define('counter-component', CounterComponent);

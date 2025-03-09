@@ -1,5 +1,10 @@
-import "./LlistaAlergens.js"
+// Importar components
+import './CounterComponent.js';
+
+// Importar el component base
 import {CardComponent} from "./CardComponent.js";
+import '../state/Carret.js';
+
 class entrantsCard extends CardComponent{
     constructor(){
         //cridar al constructor de la clase superior

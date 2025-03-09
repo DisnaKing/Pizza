@@ -45,7 +45,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             pizzaElement.setAttribute("pizza-vege", p.vegetariana ? "SI" : "NO");
             pizzaElement.setAttribute("pizza-img", p.img);
             pizzaElement.setAttribute("alergens", JSON.stringify(p.alergens));
-            pizzaElement.setAttribute('subtotal', '0.00');
+
+            // Passem la propietat carret i producte a la targeta de la pizza
+            pizzaElement.carret=carret;
+            pizzaElement.producte=p;
+
             // Agregar el elemento pizza a la lista
             llistaPizzes.appendChild(pizzaElement);
 
@@ -62,7 +66,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             entrantElement.setAttribute("entrant-nom", e.nom);
             entrantElement.setAttribute("entrant-preu", e.preu);
             entrantElement.setAttribute("entrant-img", e.img);
-            entrantElement.setAttribute('subtotal','0.00');
+
+            // Passem la propietat carret i producte a la targeta de l'entrant
+            entrantElement.carret=carret;
+            entrantElement.producte=e;
+
             // Agregar el elemento pizza a la lista
             llistaEntrants.appendChild(entrantElement);
         });
@@ -78,7 +86,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             begudaElement.setAttribute("beguda-nom", b.nom);
             begudaElement.setAttribute("beguda-preu", b.preu);
             begudaElement.setAttribute("beguda-img", b.img);
-            begudaElement.setAttribute('subtotal', '0.00');
+
+            // Passem la propietat carret i producte a la targeta de l'entrant
+            begudaElement.carret=carret;
+            begudaElement.producte=b;
+
             // Agregar el elemento pizza a la lista
             llistaBegudes.appendChild(begudaElement);
 
@@ -86,6 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Localitem el component del carret
         const carretComponent = document.querySelector("carret-component");
+
         // I li passem el carret al component perquè puga escoltar events
         carretComponent.setCarret(carret);
 

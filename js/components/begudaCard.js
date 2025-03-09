@@ -1,4 +1,10 @@
+// Importar components
+import './CounterComponent.js';
+
+// Importar el component base
 import {CardComponent} from "./CardComponent.js";
+import '../state/Carret.js';
+
 class begudaCard extends CardComponent {
     constructor(){
         //cridar al constructor de la clase superior
@@ -57,7 +63,9 @@ class begudaCard extends CardComponent {
                     <p>Alcohol: ${alcohol}</p>
                 </div>
                 <counter-component></counter-component>
-            </div>`; // Una vegada afegit el component, establim els callbacks
+            </div>`;
+
+        // Una vegada afegit el component, establim els callbacks
         if (!this.carret || !this.producte) {
             // Comprovem primer si el carret i el producte s'han proporcionat
             console.error("Error: No s'ha passat el carret o producte correctament!");

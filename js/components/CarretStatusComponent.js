@@ -13,7 +13,7 @@ class CarretStatusComponent extends BaseComponent {
     render() {    
         this.shadowRoot.innerHTML = `
             <style>
-                ${BaseComponent.styles} /* Afegim estils del component base !! */
+                ${BaseComponent.styles}, /* Afegim estils del component base !! */
                 :host {
                     display: flex;
                     align-items: center;

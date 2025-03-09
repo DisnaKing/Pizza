@@ -18,25 +18,6 @@ class PizzaCard extends CardComponent {
     connectedCallback() {
         this.render();
     }
-
-    /**
-     * funcio que observa els atributs
-     * @returns {string[]}
-     */
-    static get observedAttributes() {
-        return ['pizza-img', 'alergens', 'pizza-nom', 'pizza-preu','pizza-desc','pizza-vege','subtotal'];
-    }
-
-    /**
-     * funcio que comprova els canvis en els atributs
-     * @param name
-     * @param oldValue
-     * @param newValue
-     */
-    attributeChangedCallback(name, oldValue, newValue) {
-         this.render();
-    }
-
     /**
      * Creacio de l'objecte
      */
@@ -58,16 +39,23 @@ class PizzaCard extends CardComponent {
                     <h3>${nom}</h3>
                     <p>Ingredients: ${desc}</p>
                     <p>Preu: ${preu} €</p>
+                    <p>Vegetariana: ${vege}</p>
                     <alergens-card pizza-alergens="${alergens}"></alergens-card>
                 </div>
                 <counter-component></counter-component>
             </div>`;
         // Una vegada afegit el component, establim els callbacks
-        if (!this.carret || !this.producte) {
+        if (!this.producte) {
             // Comprovem primer si el carret i el producte s'han proporcionat
-            console.error("Error: No s'ha passat el carret o producte correctament!");
+            console.error("Error: No s'ha passat el producte correctament!");
             return;
         }
+        if (!this.carret) {
+            // Comprovem primer si el carret i el producte s'han proporcionat
+            console.error("Error: No s'ha passat el carret correctament!");
+            return;
+        }
+
 
         const counter = this.shadowRoot.querySelector("counter-component");
         // NOU: PER COMENTAR
