@@ -30,12 +30,12 @@ class Carret extends EventTarget{
 
         // Recorrem la llista de productes
         for (let i = 0; i < this.elements.length; i++) {
-            // Si l'id del producte que anem a afegir és l'element de la llista
+            // Si l'id del producte que afegirem és l'element de la llista
             // incrementem la quantitat
             if (this.elements[i].producte.id === producte.id) {
                 this.elements[i].quantitat++;
                 trobat = true;    // Actualitzem el flag
-                // I eixim del buce
+                // I eixim del bucle
                 break;
             }
         }
